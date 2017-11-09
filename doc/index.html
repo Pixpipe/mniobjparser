@@ -1,0 +1,702 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>  | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro:400,500,700' rel='stylesheet' type='text/css'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation'>
+  <div class='container'>
+    <div class='clearfix md-mxn2'>
+      <div class='fixed md-show fix-3 overflow-auto max-height-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'></h3>
+          <div class='mb1'><code></code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block field'
+            type='text' />
+          <div id='toc'>
+              <a
+                href='#MniObjParser'
+                class='block bold'>
+                MniObjParser
+              </a>
+                <a
+                  href='#MniObjParser._arrangeData'
+                  class='regular block'>
+                  #_arrangeData
+                </a>
+                <a
+                  href='#MniObjParser._parseColors'
+                  class='regular block'>
+                  #_parseColors
+                </a>
+                <a
+                  href='#MniObjParser._parseEndIndices'
+                  class='regular block'>
+                  #_parseEndIndices
+                </a>
+                <a
+                  href='#MniObjParser._parseIndices'
+                  class='regular block'>
+                  #_parseIndices
+                </a>
+                <a
+                  href='#MniObjParser._parseNormals'
+                  class='regular block'>
+                  #_parseNormals
+                </a>
+                <a
+                  href='#MniObjParser._parseRawData'
+                  class='regular block'>
+                  #_parseRawData
+                </a>
+                <a
+                  href='#MniObjParser._parseSurfProp'
+                  class='regular block'>
+                  #_parseSurfProp
+                </a>
+                <a
+                  href='#MniObjParser._parseVertices'
+                  class='regular block'>
+                  #_parseVertices
+                </a>
+                <a
+                  href='#MniObjParser._popStack'
+                  class='regular block'>
+                  #_popStack
+                </a>
+                <a
+                  href='#MniObjParser._unrollColors'
+                  class='regular block'>
+                  #_unrollColors
+                </a>
+                <a
+                  href='#MniObjParser.constructor'
+                  class='regular block'>
+                  #constructor
+                </a>
+                <a
+                  href='#MniObjParser.copy'
+                  class='regular block'>
+                  #copy
+                </a>
+                <a
+                  href='#MniObjParser.getErrorMessage'
+                  class='regular block'>
+                  #getErrorMessage
+                </a>
+                <a
+                  href='#MniObjParser.getRawColors'
+                  class='regular block'>
+                  #getRawColors
+                </a>
+                <a
+                  href='#MniObjParser.getRawNormals'
+                  class='regular block'>
+                  #getRawNormals
+                </a>
+                <a
+                  href='#MniObjParser.getRawVertices'
+                  class='regular block'>
+                  #getRawVertices
+                </a>
+                <a
+                  href='#MniObjParser.getShapeData'
+                  class='regular block'>
+                  #getShapeData
+                </a>
+                <a
+                  href='#MniObjParser.getShapeRawIndices'
+                  class='regular block'>
+                  #getShapeRawIndices
+                </a>
+                <a
+                  href='#MniObjParser.getSurfaceProperties'
+                  class='regular block'>
+                  #getSurfaceProperties
+                </a>
+                <a
+                  href='#MniObjParser.isValid'
+                  class='regular block'>
+                  #isValid
+                </a>
+                <a
+                  href='#MniObjParser.parse'
+                  class='regular block'>
+                  #parse
+                </a>
+          </div>
+        </div>
+      </div>
+      <div class='fix-margin-3'>
+        <div class='px2'>
+<div class='py1'><section class='py2 clearfix'>
+  <h2 id='MniObjParser' class='mt0'>
+    MniObjParser<span class='gray'></span>
+  </h2>
+  <p>MniObjParser is a parser of mniobj surface files. This version is an atempt of
+making a free from dependency independant module. It is based on the code witten
+by Nicolas Kassis and Tarek Sherif for BrainBrowser
+(<a href="https://brainbrowser.cbrain.mcgill.ca">https://brainbrowser.cbrain.mcgill.ca</a>).</p>
+<p>Since mniobj file can be huge, it may be a good idea to call that froma worker.</p>
+
+      <h4>Instance members</h4>
+        <div class='collapsible' id='MniObjParser._arrangeData'>
+          <a href='#MniObjParser._arrangeData'>
+            <code>
+              #_arrangeData<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>[PRIVATE]
+Rearange the data from _tempResult to _shapeData</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser._arrangeData' class='mt0'>
+                _arrangeData<span class='gray'></span>
+              </h2>
+              <p>[PRIVATE]
+            Rearange the data from _tempResult to _shapeData</p>
+            
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser._parseColors'>
+          <a href='#MniObjParser._parseColors'>
+            <code>
+              #_parseColors<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>[PRIVATE]
+Parse the color from the raw data.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser._parseColors' class='mt0'>
+                _parseColors<span class='gray'></span>
+              </h2>
+              <p>[PRIVATE]
+            Parse the color from the raw data.</p>
+            
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser._parseEndIndices'>
+          <a href='#MniObjParser._parseEndIndices'>
+            <code>
+              #_parseEndIndices<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>[PRIVATE]
+Not sure how useful endIndices are, it was used in BrainBrowser so I kept them.
+(is that useful?)</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser._parseEndIndices' class='mt0'>
+                _parseEndIndices<span class='gray'></span>
+              </h2>
+              <p>[PRIVATE]
+            Not sure how useful endIndices are, it was used in BrainBrowser so I kept them.
+            (is that useful?)</p>
+            
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser._parseIndices'>
+          <a href='#MniObjParser._parseIndices'>
+            <code>
+              #_parseIndices<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>[PRIVATE]
+Reads the vertices indices to use to make triangles.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser._parseIndices' class='mt0'>
+                _parseIndices<span class='gray'></span>
+              </h2>
+              <p>[PRIVATE]
+            Reads the vertices indices to use to make triangles.</p>
+            
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser._parseNormals'>
+          <a href='#MniObjParser._parseNormals'>
+            <code>
+              #_parseNormals<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>[PRIVATE]
+Parse the normal vector from the raw data.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser._parseNormals' class='mt0'>
+                _parseNormals<span class='gray'></span>
+              </h2>
+              <p>[PRIVATE]
+            Parse the normal vector from the raw data.</p>
+            
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser._parseRawData'>
+          <a href='#MniObjParser._parseRawData'>
+            <code>
+              #_parseRawData<span class='gray'>(objString)</span>
+            </code>
+            <div class='force-inline'>
+              <p>Parse a obj string</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser._parseRawData' class='mt0'>
+                _parseRawData<span class='gray'>(objString)</span>
+              </h2>
+              <p>Parse a obj string</p>
+            
+                <h4>Parameters</h4>
+                <ul class='suppress-p-margin'>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> <strong>objString</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>content of the obj file</p>
+            
+                      </div>
+                    </li>
+                </ul>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser._parseSurfProp'>
+          <a href='#MniObjParser._parseSurfProp'>
+            <code>
+              #_parseSurfProp<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>[PRIVATE]
+Parse surface properties from the raw data.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser._parseSurfProp' class='mt0'>
+                _parseSurfProp<span class='gray'></span>
+              </h2>
+              <p>[PRIVATE]
+            Parse surface properties from the raw data.</p>
+            
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser._parseVertices'>
+          <a href='#MniObjParser._parseVertices'>
+            <code>
+              #_parseVertices<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>[PRIVATE]
+Parse the vertices from the raw data.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser._parseVertices' class='mt0'>
+                _parseVertices<span class='gray'></span>
+              </h2>
+              <p>[PRIVATE]
+            Parse the vertices from the raw data.</p>
+            
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser._popStack'>
+          <a href='#MniObjParser._popStack'>
+            <code>
+              #_popStack<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>[PRIVATE]
+pop the raw data (big string file)</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser._popStack' class='mt0'>
+                _popStack<span class='gray'></span>
+              </h2>
+              <p>[PRIVATE]
+            pop the raw data (big string file)</p>
+            
+                  <h4>Returns</h4>
+                  <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code></code>
+                  
+                  <div class='force-inline'>
+                    
+                  </div>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser._unrollColors'>
+          <a href='#MniObjParser._unrollColors'>
+            <code>
+              #_unrollColors<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>[PRIVATE]
+From a single color, make a typed array (Uint8) of colors.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser._unrollColors' class='mt0'>
+                _unrollColors<span class='gray'></span>
+              </h2>
+              <p>[PRIVATE]
+            From a single color, make a typed array (Uint8) of colors.</p>
+            
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser.constructor'>
+          <a href='#MniObjParser.constructor'>
+            <code>
+              #constructor<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>Constructor of the MniObjParser.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser.constructor' class='mt0'>
+                constructor<span class='gray'></span>
+              </h2>
+              <p>Constructor of the MniObjParser.</p>
+            
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser.copy'>
+          <a href='#MniObjParser.copy'>
+            <code>
+              #copy<span class='gray'>(MniObjParserInstance)</span>
+            </code>
+            <div class='force-inline'>
+              <p>Copy an existing MniObjParser instance.
+This is particularly usefull in the context of a worker, if an MniObjParser
+is returned, it is using a JSON format to transfer, meaning all the methods
+are lost and only remains the data. This is to rebuild a proper MniObjParser.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser.copy' class='mt0'>
+                copy<span class='gray'>(MniObjParserInstance)</span>
+              </h2>
+              <p>Copy an existing MniObjParser instance.
+            This is particularly usefull in the context of a worker, if an MniObjParser
+            is returned, it is using a JSON format to transfer, meaning all the methods
+            are lost and only remains the data. This is to rebuild a proper MniObjParser.</p>
+            
+                <h4>Parameters</h4>
+                <ul class='suppress-p-margin'>
+                    <li><code><a href="#MniObjParser">MniObjParser</a></code> <strong>MniObjParserInstance</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>the instance to copy the data from.</p>
+            
+                      </div>
+                    </li>
+                </ul>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser.getErrorMessage'>
+          <a href='#MniObjParser.getErrorMessage'>
+            <code>
+              #getErrorMessage<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>Get the error message if any</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser.getErrorMessage' class='mt0'>
+                getErrorMessage<span class='gray'></span>
+              </h2>
+              <p>Get the error message if any</p>
+            
+                  <h4>Returns</h4>
+                  <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code></code>
+                  :
+                  <div class='force-inline'>
+                    <p>the error message, or null if any</p>
+            
+                  </div>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser.getRawColors'>
+          <a href='#MniObjParser.getRawColors'>
+            <code>
+              #getRawColors<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>Get the colors encoded like [r, g, b, a, r, g, b, a, ...]</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser.getRawColors' class='mt0'>
+                getRawColors<span class='gray'></span>
+              </h2>
+              <p>Get the colors encoded like [r, g, b, a, r, g, b, a, ...]</p>
+            
+                  <h4>Returns</h4>
+                  <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array">Float32Array</a></code></code>
+                  :
+                  <div class='force-inline'>
+                    <p>of size 4 or of size 4xnumOfVertices</p>
+            
+                  </div>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser.getRawNormals'>
+          <a href='#MniObjParser.getRawNormals'>
+            <code>
+              #getRawNormals<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>Returns the normal vectors as a typed array.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser.getRawNormals' class='mt0'>
+                getRawNormals<span class='gray'></span>
+              </h2>
+              <p>Returns the normal vectors as a typed array.</p>
+            
+                  <h4>Returns</h4>
+                  <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array">Float32Array</a></code></code>
+                  :
+                  <div class='force-inline'>
+                    <p>of normal vector encoded like [x, y, z, x, y, z, ...]</p>
+            
+                  </div>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser.getRawVertices'>
+          <a href='#MniObjParser.getRawVertices'>
+            <code>
+              #getRawVertices<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>Returns the vertice position as a typed array.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser.getRawVertices' class='mt0'>
+                getRawVertices<span class='gray'></span>
+              </h2>
+              <p>Returns the vertice position as a typed array.</p>
+            
+                  <h4>Returns</h4>
+                  <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array">Float32Array</a></code></code>
+                  :
+                  <div class='force-inline'>
+                    <p>of points encoded like [x, y, z, x, y, z, ...]</p>
+            
+                  </div>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser.getShapeData'>
+          <a href='#MniObjParser.getShapeData'>
+            <code>
+              #getShapeData<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>[DEBUGGING]</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser.getShapeData' class='mt0'>
+                getShapeData<span class='gray'></span>
+              </h2>
+              <p>[DEBUGGING]</p>
+            
+                  <h4>Returns</h4>
+                  <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code></code>
+                  :
+                  <div class='force-inline'>
+                    <p>the entire shapeData object.</p>
+            
+                  </div>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser.getShapeRawIndices'>
+          <a href='#MniObjParser.getShapeRawIndices'>
+            <code>
+              #getShapeRawIndices<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>Returns the index of vertices to be used to make triangles, as a typed array.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser.getShapeRawIndices' class='mt0'>
+                getShapeRawIndices<span class='gray'></span>
+              </h2>
+              <p>Returns the index of vertices to be used to make triangles, as a typed array.</p>
+            
+                  <h4>Returns</h4>
+                  <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></code></code>
+                  :
+                  <div class='force-inline'>
+                    <p>Since triangles have 3 vertices, the array contains index such as
+            [i0, i1, i2, i0, i1, i2, ...].</p>
+            
+                  </div>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser.getSurfaceProperties'>
+          <a href='#MniObjParser.getSurfaceProperties'>
+            <code>
+              #getSurfaceProperties<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>The surface properties contains transparency info about specularity transparency
+and other nice light-related behaviour thingies.
+May be used when building a material, but this is not mandatory.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser.getSurfaceProperties' class='mt0'>
+                getSurfaceProperties<span class='gray'></span>
+              </h2>
+              <p>The surface properties contains transparency info about specularity transparency
+            and other nice light-related behaviour thingies.
+            May be used when building a material, but this is not mandatory.</p>
+            
+                  <h4>Returns</h4>
+                  <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code></code>
+                  
+                  <div class='force-inline'>
+                    
+                  </div>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser.isValid'>
+          <a href='#MniObjParser.isValid'>
+            <code>
+              #isValid<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>Get if the file is valid, after an atempt of parsing</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser.isValid' class='mt0'>
+                isValid<span class='gray'></span>
+              </h2>
+              <p>Get if the file is valid, after an atempt of parsing</p>
+            
+                  <h4>Returns</h4>
+                  <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code></code>
+                  :
+                  <div class='force-inline'>
+                    <p>true if valid, false if invalid</p>
+            
+                  </div>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='MniObjParser.parse'>
+          <a href='#MniObjParser.parse'>
+            <code>
+              #parse<span class='gray'>(objString)</span>
+            </code>
+            <div class='force-inline'>
+              <p>Parse the nmiobj string.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='MniObjParser.parse' class='mt0'>
+                parse<span class='gray'>(objString)</span>
+              </h2>
+              <p>Parse the nmiobj string.</p>
+            
+                <h4>Parameters</h4>
+                <ul class='suppress-p-margin'>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> <strong>objString</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>This string is obviously taken out of a obj file</p>
+            
+                      </div>
+                    </li>
+                </ul>
+            </section>
+          </div>
+        </div>
+</section>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>three.js webgl - buffergeometry - uint</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+      body {
+        color: #cccccc;
+        font-family:Monospace;
+        font-size:13px;
+        text-align:center;
+
+        background-color: #050505;
+        margin: 0px;
+        overflow: hidden;
+      }
+
+      #info {
+        position: absolute;
+        top: 0px; width: 100%;
+        padding: 5px;
+      }
+
+      a {
+        color: #0080ff;
+      }
+      
+      #dialogButton {
+        position: fixed;
+        
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="dialogButton">
+    Open MniOBJ file <input type="file" id="fileInput">
+    </div>
+    <div id="container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
+    <script src="../dist/mniobjparser.umd.js"></script>
+
+    <script>
+      var fileInput = document.getElementById('fileInput');
+      
+      fileInput.addEventListener('change', function(e) {
+        var files = e.target.files;
+        var reader = new FileReader();
+        if( !files.length ){
+          return;
+        }
+        reader.onloadend = function(event) {
+          var buffer = event.target.result;
+          readMniobjFile(buffer);
+        }
+        reader.readAsText( files[0] );
+      });
+      
+      var container;
+      var camera, scene, renderer;
+      var objectContainer = new THREE.Object3D();
+
+      init();
+      animate();
+
+
+      function init() {
+        container = document.getElementById( 'container' );
+        camera = new THREE.PerspectiveCamera( 27, window.innerWidth / window.innerHeight, 1, 3500 );
+        camera.position.z = 500;
+        
+        scene = new THREE.Scene();
+        scene.fog = new THREE.Fog( 0x050505, 2000, 3500 );
+        scene.add( new THREE.AmbientLight( 0x444444 ) );
+
+        var light1 = new THREE.DirectionalLight( 0xffffff, 0.5 );
+        light1.position.set( 1, 1, 1 );
+        scene.add( light1 );
+
+        var light2 = new THREE.DirectionalLight( 0xffffff, 1.5 );
+        light2.position.set( 0, -1, 0 );
+        scene.add( light2 );
+        scene.add( objectContainer );
+
+        renderer = new THREE.WebGLRenderer( { antialias: true } );
+        renderer.setClearColor( scene.fog.color );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+
+        container.appendChild( renderer.domElement );
+        window.addEventListener( 'resize', onWindowResize, false );
+      }
+      
+      
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+      }
+
+
+      function animate() {
+        requestAnimationFrame( animate );
+        render();
+      }
+
+
+      function render() {
+        var time = Date.now() * 0.001;
+        objectContainer.rotation.x = time * 0.25;
+        objectContainer.rotation.y = time * 0.5;
+        renderer.render( scene, camera );
+      }
+
+
+      // build a geometry out of a parser
+      function buildMeshFromObjReader( parser ){
+        var geometry = new THREE.BufferGeometry();
+
+        var indices = parser.getShapeRawIndices();
+        var positions = parser.getRawVertices();
+        var normals = parser.getRawNormals();
+        var colors = parser.getRawColors();
+
+        geometry.setIndex( new THREE.BufferAttribute( indices, 1 ) );
+        geometry.addAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
+        geometry.addAttribute( 'normal', new THREE.BufferAttribute( normals, 3, true ) );
+        geometry.addAttribute( 'color', new THREE.BufferAttribute( colors, 4, true ) );
+        geometry.computeBoundingSphere();
+
+        var material = new THREE.MeshPhongMaterial( {
+          specular: 0xffffff,
+          shininess: 250,
+          side: THREE.DoubleSide,
+          vertexColors: THREE.VertexColors,
+          transparent: true,
+          opacity: parser.getSurfaceProperties().transparency,
+        } );
+
+        var mesh = new THREE.Mesh( geometry, material );
+        return mesh;
+      }
+
+
+      // strBuffer is the string content of a mni obj file 
+      function readMniobjFile( strBuffer ){
+        var parser = new mniobjparser.MniObjParser();
+        parser.parse( strBuffer );
+        
+        if( !parser.isValid() ){
+          alert("Invalid MNI OBJ file.\n" + "ERROR: " + parser.getErrorMessage());
+          return;
+        }
+
+        var mesh = buildMeshFromObjReader( parser );
+        objectContainer.add( mesh );
+      }
+
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+<head>
+  <title>MniObjParser Example</title>
+</head>
+<body>
+  <!-- importing the automatically build module -->
+  <script src="../dist/mniobjparser.umd.js"></script>
+  
+  <!-- The minified version is also accessible -->
+  <!-- <script src="../dist/mniobjparser.umd.min.js"></script> -->
+  
+  Open MniOBJ file <input type="file" id="fileInput">
+
+  <p>Open Javascript console.</p>
+
+  <script>
+
+    // the foo object is part of our mniobjparser module
+    var parser = new mniobjparser.MniObjParser();
+    
+    var fileInput = document.getElementById('fileInput');
+
+    fileInput.addEventListener('change', function(e) {
+      var files = e.target.files;
+      var reader = new FileReader();
+      if( !files.length ){
+        return;
+      }
+      reader.onloadend = function(event) {
+        var buffer = event.target.result;
+        readFile(buffer);
+      }
+      //reader.readAsArrayBuffer( files[0] );
+      reader.readAsText( files[0] );
+      
+  	});
+    
+    
+    function readFile( strBuf ){
+      
+      parser.parse( strBuf );
+      
+      var shapeData = parser.getShapeData();
+      console.log(shapeData);
+      
+      // these are the very interesting data you want to use:
+      var indices = parser.getShapeRawIndices(0); // Uint32Array
+      var positions = parser.getRawVertices();  // Float32Array
+      var normals = parser.getRawNormals(); // Float32Array
+      var colors = parser.getRawColors(); // Uint8Array
+      var surfaceProperties = parser.getSurfaceProperties(); // object
+    }
+    
+  </script>
+
+</body>
+</html>
