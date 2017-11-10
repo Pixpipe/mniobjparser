@@ -5,11 +5,12 @@
   "repository": "jonathanlurie/mniobjparser",
   "moduleName": "mniobjparser",
   "entry": "src/main.js",
-  "main": "dist/mniobjparser.cjs.es5.js",
+  "main": "dist/mniobjparser.cjs.js",
   "commonjs": "dist/mniobjparser.cjs.js",
   "module": "dist/mniobjparser.module.js",
   "browser": "dist/mniobjparser.umd.js",
   "scripts": {
+    "install": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "dev": "serve . & rollup -w -c rollup.config.dev.js",
