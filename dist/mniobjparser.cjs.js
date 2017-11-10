@@ -610,6 +610,39 @@ var MniObjParser = function () {
 
       return this._shapeData.surfaceProperties;
     }
+
+    /**
+    * Get the type of mesh.
+    * @return {String} "polygon" or "line"
+    */
+
+  }, {
+    key: "getType",
+    value: function getType() {
+      return this._shapeData.type;
+    }
+
+    /**
+    * Get wether of not the output is a 3D polygon  type
+    * @return {Boolean}
+    */
+
+  }, {
+    key: "isPolygon",
+    value: function isPolygon() {
+      return this._shapeData.type === "polygon";
+    }
+
+    /**
+    * Get wether of not the output is a line  type
+    * @return {Boolean}
+    */
+
+  }, {
+    key: "isLine",
+    value: function isLine() {
+      return this._shapeData.type === "line";
+    }
   }]);
   return MniObjParser;
 }(); /* END of class MniObjParser */

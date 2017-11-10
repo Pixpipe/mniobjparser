@@ -438,6 +438,32 @@ class MniObjParser{
   }
 
 
+  /**
+  * Get the type of mesh.
+  * @return {String} "polygon" or "line"
+  */ 
+  getType(){
+    return this._shapeData.type;
+  }
+  
+  
+  /**
+  * Get wether of not the output is a 3D polygon  type
+  * @return {Boolean}
+  */
+  isPolygon(){
+    return (this._shapeData.type === "polygon");
+  }
+  
+  
+  /**
+  * Get wether of not the output is a line  type
+  * @return {Boolean}
+  */
+  isLine(){
+    return (this._shapeData.type === "line");
+  }
+
 } /* END of class MniObjParser */
 
 export { MniObjParser };
