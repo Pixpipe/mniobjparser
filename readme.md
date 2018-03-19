@@ -10,7 +10,7 @@ Read more about the MNI OBJ file format [here](http://www.bic.mni.mcgill.ca/user
 
 **In a npm project**
 ```bash
-$ npm install --save Pixpipe/mniobjparser
+$ npm install --save mniobjparser
 ```
 
 Then use *import* (e.g. in a Rollup project):  
